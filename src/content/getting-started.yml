@@ -2,19 +2,17 @@ title: Getting Started
 body:
   - h1: Getting Started
 
-  - h2: Install esbuild
+  - h2: 安装 esbuild
 
   - p: >
-      First, download and install the esbuild command locally. A prebuilt
-      native executable can be installed using npm:
+      首先，在本地下载安装 esbuild 命令行工具. 通过 npm 安装一个预构建原生的可执行文件:
 
   - pre: |
       npm install esbuild
 
   - p: >
-      This should have installed esbuild in your local `node_modules` folder.
-      You can run the esbuild executable to verify that everything is working
-      correctly:
+      该语句将会在当前目录下的 `node_modules` 文件夹中安装 esbuild.
+      可以运行 esbuild 可执行文件来验证一切正常:
 
   - example:
       unix: |
@@ -24,21 +22,18 @@ body:
         .\node_modules\.bin\esbuild --version
 
   - p: >
-      The recommended way to install esbuild is to install the native executable
-      using npm. But if you don't want to do that, there are also some
-      [other ways to install](#other-ways-to-install).
+      推荐使用 npm 安装 esbuild 原生可执行文件. 如果不想使用 npm, 这里也有[其他的安装方式](#other-ways-to-install).
 
-  - h2: Your first bundle
+  - h2: 第一次打包
 
   - p: >
-      This is a quick real-world example of what esbuild is capable of and
-      how to use it. First, install the `react` and `react-dom` packages:
+      下面是一个真实的示例快速的演示 esbuild 的功能, 并且学习如何使用. 首先安装 `react` 和 `react-dom`:
 
   - pre: |
       npm install react react-dom
 
   - p: >
-      Then create a file called `app.jsx` containing the following code:
+      然后创建一个名为 `app.jsx` 的文件, 文件内容为:
 
   - pre.js: |
       import * as React from 'react'
@@ -48,7 +43,7 @@ body:
       console.log(Server.renderToString(<Greet />))
 
   - p: >
-      Finally, tell esbuild to bundle the file:
+      最后, 使用 esbuild 打包该文件:
 
   - example:
       unix: |
@@ -58,25 +53,16 @@ body:
         .\node_modules\.bin\esbuild app.jsx --bundle --outfile=out.js
 
   - p: >
-      This should have created a file called `out.js` containing your code
-      and the React library bundled together. The code is completely
-      self-contained and no longer depends on your `node_modules` directory.
-      If you run the code using `node out.js`, you should see something like
-      this:
+      这将会创建一个名为 `out.js` 的文件，包含打包在一起的你的代码和 React 库. 打包后的代码是完全独立的，不再依赖于 `node_modules` 目录
+      通过 `node out.js` 运行代码, 将会看到:
 
   - pre.html: |
       <h1 data-reactroot="">Hello, world!</h1>
 
   - p: >
-      Notice that esbuild also converted JSX syntax to JavaScript without any
-      configuration other than the `.jsx` extension. While esbuild can be
-      configured, it attempts to have reasonable defaults so that many common
-      situations work automatically. If you would like to use JSX syntax in
-      `.js` files instead, you can tell esbuild to allow this using the
-      `--loader:.js=jsx` flag. You can read more about the available
-      configuration options in the [API documentation](/api/).
+      注意这里 esbuild 还将 JSX 语法转换为 JavaScript, 仅需 `.jsx` 后缀, 而无任何配置。虽然 esbuild 是可配置的, 但它会尝试使用合理的默认值，以便许多常见情况自动运行. 如果想在 `.js` 文件中使用 JSX 语法, 通过传递 `--loader:.js=jsx` 标记来启用. 可以在[API documentation](/api/)查看更多可用的配置选项.
 
-  - h2: Build scripts
+  - h2: 构建脚本
 
   - p: >
       Your build command is something you will be running repeatedly, so you
